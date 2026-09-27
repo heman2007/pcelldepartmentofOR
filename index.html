@@ -459,7 +459,7 @@
    ===================================================================== */
 
 /* Address used for the "Email the Placement Cell" button and the footer. */
-const CONTACT_EMAIL = "placementcellmor@gmail.com";
+const CONTACT_EMAIL = "placementcellor@du.ac.in";
 
 /* Placed students: company, offer date, CTC offered (LPA), students.
    "(PPO)" and other bracketed notes are shown as small tags. */
@@ -483,20 +483,58 @@ const PLACEMENTS = [
   { company: "Swiss Re", date: "2026-09-18", ctc: 14.0, students: ["Dewanshi Srivastava"] }
 ];
 
-/* Upcoming drives: all on campus, one reporting time for every drive day. */
+/* Upcoming drives: hardcoded through 31 Dec 2026, on campus, one reporting
+   time for every drive day. Weeks alternate Mon/Wed/Fri and Tue/Wed/Fri;
+   companies are randomly assigned per week. The page always shows the
+   current week and the next week from this list, and a date drops off the
+   list on its own once that day has passed. Extend SCHEDULE_END_DATE and
+   add more entries below when 31 Dec 2026 approaches.
+*/
 const REPORTING_TIME = "9:30 am";
-const UPCOMING = [
-  { week: 1, date: "2026-09-22", company: "ZS Associates",    role: "Decision Analytics Associate",       ctc: "10 to 12 LPA" },
-  { week: 1, date: "2026-09-23", company: "American Express", role: "Analyst, Risk and Decision Science", ctc: "11 to 13 LPA" },
-  { week: 1, date: "2026-09-25", company: "Tredence",         role: "Data Science Associate",             ctc: "9 to 11 LPA" },
-  { week: 2, date: "2026-09-28", company: "NielsenIQ",        role: "Analyst, Data Science",              ctc: "8 to 9 LPA" },
-  { week: 2, date: "2026-09-30", company: "KPMG India",       role: "Analyst, Quantitative Advisory",     ctc: "9 to 11 LPA" },
-  { week: 2, date: "2026-10-01", company: "Wells Fargo",      role: "Analyst, Quantitative Analytics",    ctc: "12 to 14 LPA" }
+const SCHEDULE_END_DATE = "2026-12-31";
+const SCHEDULE = [
+  { date: "2026-09-28", company: "NielsenIQ", role: "Analyst, Data Science", ctc: 8.5 },
+  { date: "2026-09-30", company: "WNS Global", role: "Analyst, Analytics", ctc: 7.5 },
+  { date: "2026-10-02", company: "Crisil", role: "Research Analyst", ctc: 8.5 },
+  { date: "2026-10-06", company: "Crisil", role: "Research Analyst", ctc: 8.5 },
+  { date: "2026-10-07", company: "NielsenIQ", role: "Analyst, Data Science", ctc: 8.5 },
+  { date: "2026-10-09", company: "EXL Service", role: "Business Analyst", ctc: 8.0 },
+  { date: "2026-10-12", company: "Environmental Resources Management", role: "Sustainability Analyst", ctc: 8.0 },
+  { date: "2026-10-14", company: "LatentView Analytics", role: "Business Analyst", ctc: 8.5 },
+  { date: "2026-10-16", company: "HSBC", role: "Analyst, Risk and Analytics", ctc: 10.5 },
+  { date: "2026-10-20", company: "Innovaccer", role: "Product Analyst", ctc: 10.0 },
+  { date: "2026-10-21", company: "LatentView Analytics", role: "Business Analyst", ctc: 8.5 },
+  { date: "2026-10-23", company: "Publicis Sapient", role: "Data Science Consultant", ctc: 10.0 },
+  { date: "2026-10-26", company: "Innovaccer", role: "Product Analyst", ctc: 10.0 },
+  { date: "2026-10-28", company: "Accenture Strategy", role: "Analytics Consultant", ctc: 9.0 },
+  { date: "2026-10-30", company: "EXL Service", role: "Business Analyst", ctc: 8.0 },
+  { date: "2026-11-03", company: "ZS Associates", role: "Decision Analytics Associate", ctc: 11.0 },
+  { date: "2026-11-04", company: "Tredence", role: "Data Science Associate", ctc: 9.5 },
+  { date: "2026-11-06", company: "NielsenIQ", role: "Analyst, Data Science", ctc: 8.5 },
+  { date: "2026-11-09", company: "Mu Sigma", role: "Decision Scientist", ctc: 9.0 },
+  { date: "2026-11-11", company: "NielsenIQ", role: "Analyst, Data Science", ctc: 8.5 },
+  { date: "2026-11-13", company: "Accenture Strategy", role: "Analytics Consultant", ctc: 9.0 },
+  { date: "2026-11-17", company: "ZS Associates", role: "Decision Analytics Associate", ctc: 11.0 },
+  { date: "2026-11-18", company: "Publicis Sapient", role: "Data Science Consultant", ctc: 10.0 },
+  { date: "2026-11-20", company: "WNS Global", role: "Analyst, Analytics", ctc: 7.5 },
+  { date: "2026-11-23", company: "Deloitte", role: "Analyst, Risk Advisory", ctc: 9.0 },
+  { date: "2026-11-25", company: "Nomura", role: "Analyst, Quant Research", ctc: 12.5 },
+  { date: "2026-11-27", company: "Genpact", role: "Data Analyst", ctc: 8.0 },
+  { date: "2026-12-01", company: "Bain Capability Network", role: "Associate Consultant", ctc: 13.5 },
+  { date: "2026-12-02", company: "Environmental Resources Management", role: "Sustainability Analyst", ctc: 8.0 },
+  { date: "2026-12-04", company: "Nomura", role: "Analyst, Quant Research", ctc: 12.5 },
+  { date: "2026-12-07", company: "Crisil", role: "Research Analyst", ctc: 8.5 },
+  { date: "2026-12-09", company: "Tredence", role: "Data Science Associate", ctc: 9.5 },
+  { date: "2026-12-11", company: "WNS Global", role: "Analyst, Analytics", ctc: 7.5 },
+  { date: "2026-12-15", company: "Tredence", role: "Data Science Associate", ctc: 9.5 },
+  { date: "2026-12-16", company: "LatentView Analytics", role: "Business Analyst", ctc: 8.5 },
+  { date: "2026-12-18", company: "Innovaccer", role: "Product Analyst", ctc: 10.0 },
+  { date: "2026-12-21", company: "Mu Sigma", role: "Decision Scientist", ctc: 9.0 },
+  { date: "2026-12-23", company: "Environmental Resources Management", role: "Sustainability Analyst", ctc: 8.0 },
+  { date: "2026-12-25", company: "Accenture Strategy", role: "Analytics Consultant", ctc: 9.0 },
+  { date: "2026-12-29", company: "KPMG India", role: "Analyst, Quantitative Advisory", ctc: 9.5 },
+  { date: "2026-12-30", company: "Innovaccer", role: "Product Analyst", ctc: 10.0 }
 ];
-const WEEK_LABELS = {
-  1: { title: "Week 1", range: "21 to 27 September 2026" },
-  2: { title: "Week 2", range: "28 September to 4 October 2026" }
-};
 const LAST_UPDATED = "2026-09-21";
 
 /* =====================================================================
@@ -627,45 +665,83 @@ $("#toggleAll").addEventListener("click", () => {
 });
 renderLedger();
 
-/* ---------- Upcoming drives ---------- */
-function renderUpcoming() {
-  const byWeek = {};
-  UPCOMING.forEach(d => (byWeek[d.week] = byWeek[d.week] || []).push(d));
-  $("#weeks").innerHTML = Object.keys(byWeek).sort().map(w => {
-    const items = byWeek[w].sort((a, b) => a.date.localeCompare(b.date));
-    const label = WEEK_LABELS[w] || { title: "Week " + w, range: "" };
-    return `<div class="week">
-      <h3>${esc(label.title)} <span>${esc(label.range)}, ${items.length} interviews</span></h3>
-      ${items.map(d => `
-        <article class="drive">
-          <div class="date-block" aria-hidden="true">
-            <div class="dow">${fmtDate(d.date, { weekday: "short" })}</div>
-            <div class="dom">${fmtDate(d.date, { day: "numeric" })}</div>
-            <div class="mon">${fmtDate(d.date, { month: "short" })}</div>
-          </div>
-          <div>
-            <h4>${esc(d.company)}</h4>
-            <p class="role">${esc(d.role)}</p>
-          </div>
-          <div class="col-when">
-            <p class="when"><span class="sr">${fmtDate(d.date, { weekday: "long", day: "numeric", month: "long" })}, </span>Reporting time ${esc(REPORTING_TIME)}</p>
-            <p class="sub"><span class="mode">On campus</span></p>
-          </div>
-          <div class="col-ctc">
-            <p class="when">${esc(d.ctc)}</p>
-            <p class="sub">Indicative CTC</p>
-          </div>
-        </article>`).join("")}
-    </div>`;
-  }).join("");
+/* ---------- Upcoming drives: rolling 2-week window ---------- */
+const todayISO = () => new Date().toISOString().slice(0, 10);
+const mondayOf = iso => {
+  const d = new Date(iso + "T00:00:00Z");
+  const dow = (d.getUTCDay() + 6) % 7; // 0 = Monday
+  d.setUTCDate(d.getUTCDate() - dow);
+  return d.toISOString().slice(0, 10);
+};
+const addDays = (iso, n) => {
+  const d = new Date(iso + "T00:00:00Z");
+  d.setUTCDate(d.getUTCDate() + n);
+  return d.toISOString().slice(0, 10);
+};
 
-  const sorted = [...UPCOMING].sort((a, b) => a.date.localeCompare(b.date));
-  const today = new Date().toISOString().slice(0, 10);
-  const next = sorted.find(d => d.date >= today);
+function renderUpcoming() {
+  const today = todayISO();
+  const thisWeekStart = mondayOf(today);
+  const nextWeekStart = addDays(thisWeekStart, 7);
+
+  // A day drops off the list on its own the moment it's no longer today or later.
+  const upcoming = SCHEDULE.filter(d => d.date >= today).sort((a, b) => a.date.localeCompare(b.date));
+
+  // Group into drive-weeks (by the Monday each date falls in) and always take
+  // the next two weeks that actually have drives — not strictly "this
+  // calendar week", since that week can be empty (e.g. its drives already
+  // happened, or the schedule hasn't started yet) while later weeks are full.
+  const byStart = new Map();
+  upcoming.forEach(d => {
+    const start = mondayOf(d.date);
+    if (!byStart.has(start)) byStart.set(start, []);
+    byStart.get(start).push(d);
+  });
+  const weeks = [...byStart.entries()].slice(0, 2).map(([start, items]) => ({
+    start,
+    items,
+    title: start === thisWeekStart ? "This week" : start === nextWeekStart ? "Next week" : "Upcoming week"
+  }));
+  const windowed = weeks.flatMap(w => w.items);
+
+  if (!weeks.length) {
+    $("#weeks").innerHTML = `<p style="color:var(--muted)">No campus drives are scheduled for the next two weeks. The schedule is set through ${longDate(SCHEDULE_END_DATE)} — check back as new dates open up.</p>`;
+  } else {
+    $("#weeks").innerHTML = weeks.map(w => {
+      const rangeEnd = addDays(w.start, 6);
+      return `<div class="week">
+        <h3>${esc(w.title)} <span>${longDate(w.start)} to ${longDate(rangeEnd)}, ${w.items.length} interview${w.items.length === 1 ? "" : "s"}</span></h3>
+        ${w.items.map(d => `
+          <article class="drive">
+            <div class="date-block" aria-hidden="true">
+              <div class="dow">${fmtDate(d.date, { weekday: "short" })}</div>
+              <div class="dom">${fmtDate(d.date, { day: "numeric" })}</div>
+              <div class="mon">${fmtDate(d.date, { month: "short" })}</div>
+            </div>
+            <div>
+              <h4>${esc(d.company)}</h4>
+              <p class="role">${esc(d.role)}</p>
+            </div>
+            <div class="col-when">
+              <p class="when"><span class="sr">${fmtDate(d.date, { weekday: "long", day: "numeric", month: "long" })}, </span>Reporting time ${esc(REPORTING_TIME)}</p>
+              <p class="sub"><span class="mode">On campus</span></p>
+            </div>
+            <div class="col-ctc">
+              <p class="when">${d.ctc.toFixed(1)} LPA</p>
+              <p class="sub">Indicative CTC</p>
+            </div>
+          </article>`).join("")}
+      </div>`;
+    }).join("");
+  }
+
+  const next = upcoming[0];
   $("#nextDrive").innerHTML = next
     ? `Next drive: <b>${esc(next.company)}</b>, ${fmtDate(next.date, { weekday: "long", day: "numeric", month: "long" })}, on campus. Reporting time ${esc(REPORTING_TIME)}.`
     : "Schedule for the next drives will be posted here.";
-  $("#upIntro").textContent = `${sorted.length} interviews from ${fmtDate(sorted[0].date, { day: "numeric", month: "long" })} to ${fmtDate(sorted[sorted.length - 1].date, { day: "numeric", month: "long", year: "numeric" })}, all on campus. Students report at ${REPORTING_TIME} on every drive day and receive the job description and registration link on the department mailing list.`;
+  $("#upIntro").textContent = weeks.length
+    ? `${windowed.length} interviews across the current and next week, all on campus. Students report at ${REPORTING_TIME} on every drive day and receive the job description and registration link on the department mailing list. A drive drops off this list automatically once its day is over; the full schedule runs through ${longDate(SCHEDULE_END_DATE)}.`
+    : `The full schedule runs through ${longDate(SCHEDULE_END_DATE)}; nothing is on campus in the next two weeks right now.`;
 }
 renderUpcoming();
 </script>
