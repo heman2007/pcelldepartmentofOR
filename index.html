@@ -498,6 +498,7 @@ const SCHEDULE = [
   { date: "2026-10-01", company: "Crisil", role: "Research Analyst", ctc: 8.5 },
   { date: "2026-10-06", company: "Crisil", role: "Research Analyst", ctc: 8.5 },
   { date: "2026-10-07", company: "NielsenIQ", role: "Analyst, Data Science", ctc: 8.5 },
+  { date: "2026-10-08", company: "Fractal", role: "Data Scientist", ctc: 12.0, reportTime: "10:30 am" },
   { date: "2026-10-09", company: "EXL Service", role: "Business Analyst", ctc: 8.0 },
   { date: "2026-10-12", company: "Environmental Resources Management", role: "Sustainability Analyst", ctc: 8.0 },
   { date: "2026-10-14", company: "LatentView Analytics", role: "Business Analyst", ctc: 8.5 },
@@ -718,7 +719,7 @@ function renderUpcoming() {
               <p class="role">${esc(d.role)}</p>
             </div>
             <div class="col-when">
-              <p class="when"><span class="sr">${fmtDate(d.date, { weekday: "long", day: "numeric", month: "long" })}, </span>Reporting time ${esc(REPORTING_TIME)}</p>
+              <p class="when"><span class="sr">${fmtDate(d.date, { weekday: "long", day: "numeric", month: "long" })}, </span>Reporting time ${esc(d.reportTime || REPORTING_TIME)}</p>
               <p class="sub"><span class="mode">On campus</span></p>
             </div>
             <div class="col-ctc">
@@ -732,7 +733,7 @@ function renderUpcoming() {
 
   const next = upcoming[0];
   $("#nextDrive").innerHTML = next
-    ? `Next drive: <b>${esc(next.company)}</b>, ${fmtDate(next.date, { weekday: "long", day: "numeric", month: "long" })}, on campus. Reporting time ${esc(REPORTING_TIME)}.`
+    ? `Next drive: <b>${esc(next.company)}</b>, ${fmtDate(next.date, { weekday: "long", day: "numeric", month: "long" })}, on campus. Reporting time ${esc(next.reportTime || REPORTING_TIME)}.`
     : "Schedule for the next drives will be posted here.";
   $("#upIntro").textContent = weeks.length
     ? `${windowed.length} interviews across the current and next week, all on campus. Students report at ${REPORTING_TIME} on every drive day and receive the job description and registration link on the department mailing list. A drive drops off this list automatically once its day is over; the full schedule runs through ${longDate(SCHEDULE_END_DATE)}.`
